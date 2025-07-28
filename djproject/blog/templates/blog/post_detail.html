@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>{{ post.title }}</h1>
+    <p>{{ post.text }}</p>
+
+    {% if post.image %}
+        <h3>Image:</h3>
+        <img src="{{ post.image.url }}" alt="Image" style="max-width: 400px;">
+    {% endif %}
+
+    {% if post.audio %}
+        <h3>Audio:</h3>
+        <audio controls>
+            <source src="{{ post.audio.url }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    {% endif %}
+
+    {% if post.video %}
+        <h3>Video:</h3>
+        <video controls width="400">
+            <source src="{{ post.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endif %}
+{% endblock %}
